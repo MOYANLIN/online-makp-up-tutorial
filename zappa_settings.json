@@ -1,0 +1,7 @@
+{
+"dev":{
+	"app_function": "run.webapp",
+	"s3_bucket":"wonderimage",
+	"parameter_depth":1
+}
+}

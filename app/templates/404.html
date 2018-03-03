@@ -1,0 +1,23 @@
+﻿<html>
+<head>
+<meta charset="utf-8">
+<title>404</title>
+<link href={{ url_for('static',filename='css/404.css') }} rel="stylesheet">
+</head>
+
+<body>
+
+<div class="newfinno-con">
+	<img src="{{url_for('static', filename='image/404.png')}}">
+</div>
+
+<div class="tips">
+	<h2 class="b-text">Your page is not on earth.</h2>
+	<p class="m-box">
+		<span class="m-text">Make Another Try!</span>
+		<a class="back-index" href="{{url_for("mainpage")}}">Back</a>
+	</p>
+</div>
+
+</body>
+</html>

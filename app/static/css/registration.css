@@ -1,0 +1,377 @@
+﻿
+html{
+    position: fixed;
+}
+
+.heading-font {
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+
+.body-font {
+  font-family: 'Muli', 'Helvetica', 'Arial', 'sans-serif';
+}
+.alt-font {
+  font-family: 'Lato', 'Helvetica', 'Arial', 'sans-serif';
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+body {
+  font-family: 'Muli', 'Helvetica', 'Arial', 'sans-serif';
+}
+a {
+  -webkit-transition: all 0.35s;
+  -moz-transition: all 0.35s;
+  transition: all 0.35s;
+  color: #fdcc52;
+}
+a:hover,
+a:focus {
+  color: #fcbd20;
+}
+
+
+hr {
+  max-width: 100px;
+  margin: 25px auto 0;
+  border-width: 1px;
+  border-color: rgba(34, 34, 34, 0.1);
+}
+hr.light {
+  border-color: white;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+p {
+  font-size: 18px;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.navbar-default {
+  background-color: white;
+  border-color: rgba(34, 34, 34, 0.05);
+  -webkit-transition: all 0.35s;
+  -moz-transition: all 0.35s;
+  transition: all 0.35s;
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
+}
+
+.navbar-default .navbar-header .navbar-brand {
+  font-family: 'Catamaran', 'Helvetica', 'Arial', 'sans-serif';
+  font-weight: 200;
+  letter-spacing: 1px;
+  color: #fdcc52;
+}
+
+main{
+    background:#fff;
+    padding-left: 30px;
+    padding-top: 20px;
+    margin: auto;
+    margin-top: 10%;
+    margin-bottom: 5%;
+    width:750px;
+    height:430px;
+    position: relative;
+    border-radius: 12px;
+    border: 1px solid rgb(225,225, 225);
+}
+
+main{
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+form{
+    position: relative;
+}
+
+form p{
+    font-size: 16px;
+    margin-bottom: 4px;
+    margin-top: 4px;
+}
+
+form input{
+    width: 325px;
+    height: 35px;
+    border-radius:4px;
+    border: 1px solid lightgrey; 
+    padding-left: 10px;
+    font-size: 15px;
+}
+
+form input:focus{
+    color: #000000;
+    outline: none !important;
+    border:1px solid #93C7F2;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+#username{
+    position: absolute;
+    padding-left: 10px;
+}
+
+#age{
+    position: absolute;
+    left: 265px;
+    margin-left: 100px;
+}
+
+#age input{
+    width: 180px;
+}
+
+#gender{
+    position: absolute;
+    left: 265px;
+    margin-left: 310px;
+    font-family:'Lucida Grande', Tahoma, Verdana, sans-serif;
+    color: #000;
+}
+
+.dropdown {
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  height: 35px;
+  width: 128px;
+  background: #fff;
+  border: 1px solid;
+  border-color: lightgrey;
+  border-radius: 3px;
+}
+.dropdown:before, .dropdown:after {
+  content: '';
+  position: absolute;
+  z-index: 20;
+  top: 12px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 4px dashed;
+  border-color: #888 transparent;
+  pointer-events: none;
+}
+.dropdown:before {
+  border-bottom-style: solid;
+  border-top: none;
+}
+.dropdown:after {
+  margin-top: 7px;
+  border-top-style: solid;
+  border-bottom: none;
+}
+
+.dropdown-select {
+  position: relative;
+  width: 100%;
+  margin: 0;
+  padding: 8px 2px 6px 10px;
+  height: 35px;
+  line-height: 18px;
+  font-size: 14px;
+  color: grey;
+  text-shadow: 0 1px white;
+  /* Fallback for IE 8 */
+  background: #f2f2f2;
+  /* "transparent" doesn't work with Opera */
+  background: rgba(0, 0, 0, 0) !important;
+  border: 0;
+  border-radius: 0;
+  -webkit-appearance: none;
+}
+.dropdown-select:focus {
+  width: 100%;
+  color: #000000;
+  outline: none !important;
+  border:2px solid #93C7F2;
+  box-shadow: 0 0 10px #719ECE;
+}
+
+#email{
+    position: absolute;
+    top: 70px;
+    margin-left: 10px;
+}
+
+#email input{
+    width: 260px;
+    height: 34px;
+}
+
+#phone{
+    position: absolute;
+    top: 70px;
+    margin-left: 300px;
+}
+
+#phone input{
+    width: 230px;
+    height: 34px;
+}
+
+#occupation{
+    position: absolute;
+    top: 70px;
+    margin-left: 560px;
+}
+
+#occupation input{
+    width: 132px;
+    height: 34px;
+}
+
+#password{
+    position: absolute;
+    top: 140px;
+    margin-left: 10px;
+}
+
+#cfpassword{
+    position: absolute;
+    top: 140px;
+    margin-left: 365px;
+}
+
+#aboutme{
+    position: absolute;
+    top: 215px;
+    margin-left: 10px;
+}
+
+#aboutme textarea{
+    height: 100px;
+    width: 305px;
+    border-color: lightgrey;
+    border-radius: 4px;
+    padding: 2px;
+    font-size: 15px;
+}
+
+#aboutme textarea:focus{
+    color: #000000;
+    outline: none !important;
+    border:1px solid #93C7F2;
+    box-shadow: 0 0 10px #719ECE;
+}
+
+#locations{
+    position: absolute;
+    top: 215px;
+    margin-left: 333px;
+}
+
+#ck-collection{
+    border:1px solid lightgrey;
+    border-radius: 4px;
+    width: 365px;
+    height: 100px;
+    position: relative;
+}
+
+.ck-button label{ 
+    display: inline-block; 
+    border: solid 1px lightgrey; 
+    background-color: white;
+    font-size: 15px;
+    border-radius: 3px;
+    padding: 8px;
+    margin-top: 2px;
+
+}
+
+.ck-button input{
+  display:none;
+}
+
+input:checked + label{
+  background-color: #5289B0;
+}
+
+.ck-button:hover {
+    color: #000000;
+    outline: none !important;
+    border:1px solid #5289B0;
+    border-radius: 4px;
+    box-shadow: 0 0 0px #719ECE;
+}
+
+.ck-button:nth-child(1){
+    position: absolute;
+    margin-left: 6px;
+    margin-top: 6px;
+}
+
+.ck-button:nth-child(2){
+    position: absolute;
+    margin-left: 105px;
+    margin-top: 6px;
+}
+
+.ck-button:nth-child(3){
+    position: absolute;
+    margin-left: 203px;
+    margin-top: 6px;
+}
+
+.ck-button:nth-child(4){
+    position: absolute;
+    margin-left: 6px;
+    margin-top: 48px;
+}
+
+.ck-button:nth-child(5){
+    position: absolute;
+    margin-left: 120px;
+    margin-top: 48px;
+}
+
+.ck-button:nth-child(6){
+    position: absolute;
+    margin-left: 230px;
+    margin-top: 48px;
+}
+
+#input_submit{
+    position: absolute;
+    background-color: #5289B0;
+    color: white;
+    width: 100px;
+    top: 360px;
+    left: 10px;
+}
+
+#input_submit:hover{
+    background-color: #86B4D5;
+}
+
+textarea
+{
+    resize: none;
+}
+
+#error_mes{
+    position: absolute;
+    top: 380px;
+    left: 250px;
+    background-color: rgba(255,217,217,0.5);
+}
