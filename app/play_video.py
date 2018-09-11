@@ -6,6 +6,7 @@ import datetime
 import boto3
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
 
+#display specific information of selected video
 @webapp.route('/play/<string:title>',methods=["GET","POST"])
 def play(title):
     
@@ -20,7 +21,6 @@ def play(title):
     )
     data = {}
     data['tag'] = r['Items'][0]['tag']
-    data['likes'] = r['Items'][0]['likes']
     data['blogger']=r['Items'][0]['blogger']
     data['list']=r['Items'][0]['list']
     video_name = "https://s3.amazonaws.com/wondervideo/" + title.split('.')[0]+'.mp4'

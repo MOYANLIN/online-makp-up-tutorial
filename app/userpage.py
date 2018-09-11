@@ -6,6 +6,7 @@ import boto3
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
 webapp.config['profile_img']="whileyouweresleeping"
 
+#homepage for every user
 @webapp.route('/user',methods=["GET","POST"])
 def user():
     username = session['username']
@@ -15,7 +16,7 @@ def user():
     )
     data = {}
     data['username'] = r['Items'][0]['username']
-    userimg = r['Items'][0]['profileimg']
+    userimg = r['Items'][0]['profileimg']  #check the profile image
     if userimg == 'null':
         userimg = 'static/image/DefaultPic.jpg'
     else:
@@ -95,5 +96,5 @@ def collection():
     items = r['Items']
 
 
-    return render_template("colletion.html", items=items)
+    return render_template("collection.html", items=items)
 

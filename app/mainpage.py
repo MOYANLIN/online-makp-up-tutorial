@@ -6,11 +6,11 @@ import boto3
 from boto3.dynamodb.conditions import Key
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
 
-webapp.config['AWS_ACCESS_KEY_ID']='ILQ'
-webapp.config['AWS_SECRET_ACCESS_KEY']='9wl'
+webapp.config['AWS_ACCESS_KEY_ID']=''
+webapp.config['AWS_SECRET_ACCESS_KEY']=''
 
     
-@webapp.route('/', methods=['GET','POST'])
+@webapp.route('/makeup', methods=['GET','POST'])
 def mainpage():
     client=boto3.client('s3',
                 aws_access_key_id=webapp.config['AWS_ACCESS_KEY_ID'],
@@ -22,7 +22,7 @@ def mainpage():
     table = dynamodb.Table('video')
     imagename=[]
     data={}
-    for each in response['Contents']:
+    for each in response['Contents']:   #find the cover image of each video
         imagename.append(each['Key'])
         r = table.query(
             KeyConditionExpression=Key('title').eq(each['Key'].split('.')[0])
@@ -32,7 +32,7 @@ def mainpage():
      
 
 
-    if "username" in session:
+    if "username" in session:    #check whether usename in session
         username=session['username']
     else:
         username=None

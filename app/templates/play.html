@@ -8,14 +8,12 @@
 	 <!-- Bootstrap Core CSS -->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Custom Fonts -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 	<link href={{ url_for('static',filename='css/comment.css') }} rel="stylesheet">
 
+
 <style>
  body {
-	
     backgroud-color: #222;
       }
 
@@ -33,39 +31,34 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#"><i class="fa fa-fw fa-magic"></i> Make Up Forever</a>
+			<a class="navbar-brand" href="{{url_for('mainpage') }}"><i class="fa fa-fw fa-magic"></i> Makeup Forever</a>
 		</div>
 		
 		<form class="navbar-form navbar-left"  action="{{url_for('search') }}" method="POST">
-
             <div class="form-group">
-                <input type="text" class="form-control mr-sm-2" placeholder="Search" name="search_content">
-
-			 <!--<a href="{{url_for('search')}}"class="btn btn-primary" role="button"><span class="glyphicon glyphicon-search"></span>&nbsp;Search</a> -->
-
+                <input type="text" class="form-control mr-sm-2" placeholder="Search" name="search_content" required/>
 			</div>
 			<div class="form-group">
 				<input type="submit" class="btn btn-primary" value="Search">
 			</div>
-           <!-- <button type="submit" class="btn btn-primary">Search</button> -->
         </form>
+
 		
 		<div class="collapse navbar-collapse">
 			<ul class="nav navbar-nav navbar-right">
 				{% if "username" not in session or session['username']=='' %}
-					<li><a href="{{url_for('login')}}"><span class="glyphicon glyphicon-log-in"></span> login</a></li>
+					<li><a href="{{url_for('login')}}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
 				{% endif %}
 				{%if "username" in session and session['username']!='' %}
 				<li><a href="{{url_for('user')}}"><span class="glyphicon glyphicon-log-in"></span> {{username}}</a></li>
 				{% endif %}
-				<li><a href="{{url_for('registration')}}"><span class="glyphicon glyphicon-user"></span> register</a></li>
-				<li><a href="{{url_for('logout')}}"><span class="glyphicon glyphicon-log-out"></span> logout</a></li>
+				<li><a href="{{url_for('registration')}}"><span class="glyphicon glyphicon-user"></span> Register</a></li>
+				<li><a href="{{url_for('logout')}}"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
 			</ul>
 		
 		</div><!-- /.nav-collapse -->
 	</div><!-- /.container -->
 </nav>
-
 
 <div class="container">
 <div class="row">
@@ -91,32 +84,26 @@
                             <td style="width:30%;color:#ccc;font-weight:bold;font-style:normal;">
                                 <span class="glyphicon glyphicon-film"></span>&nbsp;Title
                             </td>
-                            <td>{{ data['title'] }}</td>
+                            <td>{{ data['title'].title() }}</td>
                         </tr>
                         <tr>
                             <td style="color:#ccc;font-weight:bold;font-style:normal;">
                                 <span class="glyphicon glyphicon-tag"></span>&nbsp;Tags
                             </td>
-                            <td>{{ data['tag'] }}</td>
+                            <td>{{ data['tag'].title() }}</td>
                         </tr>
                         <tr>
                             <td style="color:#ccc;font-weight:bold;font-style:normal;">
                                 <span class="glyphicon glyphicon-user"></span>&nbsp;Blogger
                             </td>
-                            <td>{{ data['blogger'] }}</td>
+                            <td>{{ data['blogger'].title() }}</td>
                         </tr>
                         <tr>
                             <td style="color:#ccc;font-weight:bold;font-style:normal;">
-                                <span class="glyphicon glyphicon-list"></span>&nbsp;Make Up List
+                                <span class="glyphicon glyphicon-list"></span>&nbsp;Makeup List
                             </td>
                             <td>{{ data['list'] }}</td>
                         </tr>
-                        <tr>
-                            {%if "username" in session and session['username']!='' %}
-                        	<a href="{{url_for('collect', title=data['title'])}}" class="btn btn-danger" target="_blank" role="button"><span class="glyphicon glyphicon-heart"></span>&nbsp;Collection</a>
-                            {% endif %}
-                        </tr>
-                       
                     </table>
                 </div>
             </div>
@@ -130,53 +117,44 @@
                     <h3 class="panel-title"><span class="glyphicon glyphicon-comment"></span>&nbsp;Video Comments</h3>
                 </div>
                 <div class="panel-body">
+                <!--ask user to login-->
                     	{% if "username" not in session or session['username'] == ''%}
                         <div class="alert alert-danger alert-dismissible" role="alert">
-                            <button type="button" class="close" data-dismiss="alert">
-                                <span aria-hidden="true">×</span>
-                                <span class="sr-only">Close</span>
-                            </button>
                             <strong>Please<a href="{{ url_for('login') }}" target="_blank" class="text-info">
-                                login</a> to join the discussion about {{ data.title }}！</strong>
+                                login</a> to join the discussion about {{ data.title.title() }}！</strong>
                         </div>
                     	{% endif %}
-
-
 			{%if "username" in session and session['username']!='' %}
-    			<div class="widget-area no-padding blank">
+
+                {#display comment box#}
+    			<div>
             		<div class="status-upload">
 				<form action="{{ url_for('play', title=data['title']) }}" method="POST" >
-				<textarea placeholder="Do you like this make-up tutorial?"  name="content"></textarea>
+				<textarea placeholder="Do you like this make-up tutorial?"  name="content" required></textarea>
 		    		<ul>
-		    		<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="fa fa-music"></i></a></li>
-                    		<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class="fa fa-video-camera"></i></a></li>
-		    		<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Sound Record"><i class="fa fa-microphone"></i></a></li>
-		    		<li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
+                    <a class="btn btn-danger" id="btn-col" style="margin-top: 9px; padding: 6px, 6px">
+                        <span class="glyphicon glyphicon-heart"></span>&nbsp;Collection</a>
 		    		</ul>
 		    	<button type="submit" class="btn btn-success green" value="Submit"><i class="fa fa-share"></i> Share</button>
-			<!--<input type="submit">-->
+                <div class="col-md-12"><font style="color:green" id="show_col_msg"></font></div>
 		    	</form>
-		    	 <div id="error_mes">{{ error }}</div>
-				{% for message in get_flashed_messages(with_categories=True) %}
-				<div class="alert alert-{{ message[0] }}">
-    			<button type="button" class="close" data-dismiss="alert">&times;</button>
-    			{{ message[1] }}
-				</div>
-				{% endfor %}
-	    	<br>
-                        
-		</div>
-   	</div>
+		        </div>
+   	            </div>
+
 			{% endif %}
 
-                    <ol class="breadcrumb" style="margin-top:6px;">
-                        <li>Comments</li>
-                    </ol>
+            {#  display comment list  #}
+                <div class="panel panel-success" id="comment-title">
+                    <div class="panel-heading">
+                        <div class="panel-title">Comments</div>
+                    </div>
+                </div>
             	
                     {% for item in items %}
 			<div class="comments-list">
                            <div class="media" style="margin-top:15px;">
-                           <p class="pull-right"><small>{{item['post_time']}}</small></p>
+                           <p class="pull-right">
+                            <small>{{item['post_time']}}</small></p>
                             <a class="media-left" >
                             	{% if item['profile_img']=='null' %}
                               <img alt="50x50"   class="img-circle"  style="border:1px solid #abcdef;width: 50px;height: 50px;"  src="{{url_for('static', filename='image/DefaultPic.jpg')}}" />
@@ -187,7 +165,6 @@
                             	{% endif %}
                             </a>
                             <div class="media-body">
-                              <!--<h4 class="media-heading user_name"><span class="glyphicon glyphicon-user"></span> -->
                               <h4 class="media-heading user_name">
                               {{item['username']}}</h4>
                               {{item['content']}}
@@ -203,14 +180,38 @@
 </div>
 
 
-
- 
-<!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-
-	<script src={{ url_for('static',filename="script/new-age.min.js") }}></script>
+<!--interactive manipulation of collecting video-->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#btn-col").click(function () {
+                var title = "{{ data['title'] }}";
+                var username = "{{ session["username"] }}";
+                $.ajax({
+                    url: "{{url_for('videoCollection')}}",
+                    type: "GET",
+                    data: {'title':title, "username": username},
+                    dataType: "json",
+                    success: function (res) {
+                        if (res.ok == 1) {
+                            $("#show_col_msg").empty();
+                            $("#show_col_msg").append("Add collection uccessfully!");
+                        } if(res.ok== 0) {
+                            $("#show_col_msg").empty();
+                            $("#show_col_msg").append("You already added it!");
+                        }
+                    }
+                })
+            })
+        });
+    </script>
 </body>
 </html>
+
+<style>
+    #comment-title{
+        clear:both;
+        display:inline;
+        margin-top: 200px;
+    }
+
+</style>

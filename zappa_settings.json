@@ -2,6 +2,7 @@
 "dev":{
 	"app_function": "run.webapp",
 	"s3_bucket":"wonderimage",
-	"parameter_depth":1
+	"parameter_depth":1,
+        "route53_enabled":false
 }
 }

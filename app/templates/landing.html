@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome</title>
+    <link href={{ url_for('static',filename='css/landing.css') }} rel="stylesheet">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div id="landing-header">
+ 		<h1>Welcome to Makeup Forever!</h1>
+		<a href="{{url_for('mainpage')}}" class="btn btn-lg btn-success">Start Your Journey</a>
+    </div>
+
+    <ul class="slideshow">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+    </ul>
+</body>
+</html>

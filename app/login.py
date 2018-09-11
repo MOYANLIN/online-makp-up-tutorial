@@ -5,7 +5,7 @@ import boto3
 from boto3.dynamodb.conditions import Key, Attr
 dynamodb = boto3.resource('dynamodb', region_name='us-east-1')
 
-
+#login implementation
 webapp.secret_key='ece1779'
 @webapp.route('/login',methods=['GET'])
 def login():
